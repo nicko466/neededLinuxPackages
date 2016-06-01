@@ -5,7 +5,7 @@
 #remember to relogin when you do that 
 
 echo 'Installing build-essential git terminator...'
-sudo apt -y install build-essential git terminator curl wget vim apt-transport-https
+sudo apt -y install build-essential git terminator curl wget vim apt-transport-https ssh apt-utils
 
 echo 'Generate ssh key for ssh'
 eval "$(ssh-agent -s)"
