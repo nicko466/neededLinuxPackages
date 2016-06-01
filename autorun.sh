@@ -24,3 +24,13 @@ sudo apt -y install openjdk-7-jdk
 echo 'Install zsh && oh-myzsh'
 sudo apt -y install zsh 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+echo "Configure p4merge as a diff tool"
+p4merge_dir_name=`tar -tzf p4v.tgz | head -1 | cut -f1 -d"/"`
+tar -xvzf p4v.tgz
+rm p4v.tgz
+sudo mv $p4merge_dir_name /usr/share/
+sudo ln -s /usr/share/$p4merge_dir_name/bin/p4merge /usr/local/bin/p4merge
+git config --global merge.tool p4merge
+git config --global mergetool.keepBackup false
+git config --global mergetool.p4merge.path /usr/local/bin/p4merge
