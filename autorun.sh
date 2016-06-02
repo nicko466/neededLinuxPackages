@@ -44,6 +44,9 @@ function succeed {
     sudo groupadd docker
     sudo gpasswd -a ${USER} docker
     sudo service docker restart
+
+    echo "Installing maven"
+    sudo apt -y install maven
 }
 
 function log {
