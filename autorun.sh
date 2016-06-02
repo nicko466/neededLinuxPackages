@@ -37,6 +37,13 @@ function succeed {
     git config --global merge.tool p4merge
     git config --global mergetool.keepBackup false
     git config --global mergetool.p4merge.path /usr/local/bin/p4merge
+
+    echo "Installing Docker"
+    curl -fsSL https://get.docker.com/ | sh
+    #enable to run docker command without the need of sudo command
+    sudo groupadd docker
+    sudo gpasswd -a ${USER} docker
+    sudo service docker restart
 }
 
 function log {
