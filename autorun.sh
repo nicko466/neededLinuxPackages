@@ -21,8 +21,15 @@ function succeed {
     sudo apt-get update
     sudo apt-get -y install google-chrome-stable
 
-    echo 'Install of openjdk 7'
-    sudo apt -y install openjdk-7-jdk
+    #echo 'Install of openjdk 7'
+    #sudo apt -y install openjdk-7-jdk
+
+    echo 'Install of java 8'
+    sudo echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
+    sudo echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+    sudo apt-get update
+    sudo apt-get install oracle-java8-installer
 
     echo 'Install zsh && oh-myzsh'
     sudo apt -y install zsh
